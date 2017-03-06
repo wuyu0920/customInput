@@ -1,207 +1,106 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 	<title>jQuery表单美化定制单选按钮与复选框美化特效</title>
-
-	<style>
-	
-/* page styles */
-body{font-family:"Segoe UI", Frutiger,Tahoma,Helvetica,"Helvetica Neue", Arial, sans-serif;font-size:62.5%;}
-fieldset{margin-top:1em;margin-bottom:1em;border:1px solid #ddd;padding:1em 15px;}
-legend{font-weight:bold;font-size:1.4em; font-weight:bold; padding:.2em 5px;}
-label{margin-right:1.2em;}
-.demo{margin:0 auto;width:600px;}
-.demo h3{margin:50px 0 20px 0;font-size:22px;color:#3366cc;}
-/* ----- Custom checkboxes, radios ----- */
-/*	wrapper divs */
-.custom-checkbox,.custom-radio{position:relative;}
-/* input, label positioning */
-.custom-checkbox input{position:absolute;left:2px;top:2px;margin:0;}
-.custom-checkbox label{display:block;position:relative;font-size:1.3em;padding-right:1em;line-height:1;padding:.5em 0 .5em 30px;margin:0 0 .3em;cursor:pointer;}
-/* states */
-.custom-checkbox label{background:url(checkbox.gif) no-repeat;}
-.custom-radio label{background:url(radiobutton.gif) no-repeat;}
-.custom-checkbox label,.custom-radio label{background-position:-10px -14px;}
-.custom-checkbox label.hover,.custom-checkbox label.focus,.custom-radio label.hover,.custom-radio label.focus{background-position:-10px -114px;}
-.custom-checkbox label.checked,.custom-radio label.checked{background-position:-10px -214px;}
-.custom-checkbox label.checkedHover,.custom-checkbox label.checkedFocus{background-position:-10px -314px;}
-.custom-checkbox label.focus,.custom-radio label.focus{outline:1px dotted #ccc;}
-/* input, label positioning */
-.custom-radio input{position:absolute;left:2px;top:2px;margin:0;}
-.custom-radio label{display:block;position:relative;font-size:1.3em;padding-right:1em;line-height:1;padding:.5em 0 .5em 30px;margin:0 0 .3em;cursor:pointer;}
-/* ---- toggle button examples ---- */
-#view{width:140px;display: block;}
-#view .custom-checkbox,#view .custom-radio{width:50%;float:left;}
-#show{width:250px;display: block;clear: left;}
-#show .custom-checkbox,#show .custom-radio{width:33%;float:left;}
-.toggle label{border-collapse:collapse;}
-.toggle .custom-checkbox label,.toggle .custom-radio label{padding:.4em 1em;border:1px solid #aaa;background-color:#eee;text-align:center;cursor:pointer;font-size:1.2em;width:auto;overflow:visible;background:#459e00 url(button-green.gif) no-repeat left center;color:#fff;border-color:#2d7406;text-shadow:-1px -1px 0 #37730e;}
-.toggle .custom-checkbox label.hover,.toggle .custom-checkbox label.focus,.toggle .custom-radio label.hover,.toggle .custom-radio label.focus{background-position: right center;border-color:#205b00;}
-.toggle .custom-checkbox label.checked,.toggle .custom-radio label.checked,.toggle .custom-checkbox label.checkedHover,.toggle .custom-checkbox label.checkedFocus{background:#2d7406;border-color:#2d7406;}
-.toggle .first label{-moz-border-radius-bottomleft:7px;-webkit-border-bottom-left-radius:7px;border-bottom-left-radius:7px;-moz-border-radius-topleft:7px;-webkit-border-top-left-radius:7px;border-top-left-radius:7px;}
-.toggle .last label{-moz-border-radius-bottomright:7px;-webkit-border-bottom-right-radius:7px;border-bottom-right-radius:7px;-moz-border-radius-topright:7px;-webkit-border-top-right-radius:7px;border-top-right-radius:7px;}
+	<style>	
+	/* page styles */
+	body{font-family:"Segoe UI", Frutiger,Tahoma,Helvetica,"Helvetica Neue", Arial, sans-serif;font-size:62.5%;}
+	fieldset{margin-top:1em;margin-bottom:1em;border:1px solid #ddd;padding:1em 15px;}
+	legend{font-weight:bold;font-size:1.4em; font-weight:bold; padding:.2em 5px;}
+	label{margin-right:1.2em;}
+	.demo{margin:0 auto;width:600px;}
+	.demo h3{margin:50px 0 20px 0;font-size:22px;color:#3366cc;}
+	/* ----- Custom checkboxes, radios ----- */
+	/*	wrapper divs */
+	.custom-checkbox,.custom-radio{position:relative;}
+	/* input, label positioning */
+	.custom-checkbox input{position:absolute;left:2px;top:2px;margin:0;}
+	.custom-checkbox label{display:block;position:relative;font-size:1.3em;padding-right:1em;line-height:1;padding:.5em 0 .5em 30px;margin:0 0 .3em;cursor:pointer;}
+	/* states */
+	.custom-checkbox label{background:url(checkbox.gif) no-repeat;}
+	.custom-radio label{background:url(radiobutton.gif) no-repeat;}
+	.custom-checkbox label,.custom-radio label{background-position:-10px -14px;}
+	.custom-checkbox label.hover,.custom-checkbox label.focus,.custom-radio label.hover,.custom-radio label.focus{background-position:-10px -114px;}
+	.custom-checkbox label.checked,.custom-radio label.checked{background-position:-10px -214px;}
+	.custom-checkbox label.checkedHover,.custom-checkbox label.checkedFocus{background-position:-10px -314px;}
+	.custom-checkbox label.focus,.custom-radio label.focus{outline:1px dotted #ccc;}
+	/* input, label positioning */
+	.custom-radio input{position:absolute;left:2px;top:2px;margin:0;}
+	.custom-radio label{display:block;position:relative;font-size:1.3em;padding-right:1em;line-height:1;padding:.5em 0 .5em 30px;margin:0 0 .3em;cursor:pointer;}
+	/* ---- toggle button examples ---- */
+	#view{width:140px;display: block;}
+	#view .custom-checkbox,#view .custom-radio{width:50%;float:left;}
+	#show{width:250px;display: block;clear: left;}
+	#show .custom-checkbox,#show .custom-radio{width:33%;float:left;}
+	.toggle label{border-collapse:collapse;}
+	.toggle .custom-checkbox label,.toggle .custom-radio label{padding:.4em 1em;border:1px solid #aaa;background-color:#eee;text-align:center;cursor:pointer;font-size:1.2em;width:auto;overflow:visible;background:#459e00 url(button-green.gif) no-repeat left center;color:#fff;border-color:#2d7406;text-shadow:-1px -1px 0 #37730e;}
+	.toggle .custom-checkbox label.hover,.toggle .custom-checkbox label.focus,.toggle .custom-radio label.hover,.toggle .custom-radio label.focus{background-position: right center;border-color:#205b00;}
+	.toggle .custom-checkbox label.checked,.toggle .custom-radio label.checked,.toggle .custom-checkbox label.checkedHover,.toggle .custom-checkbox label.checkedFocus{background:#2d7406;border-color:#2d7406;}
+	.toggle .first label{-moz-border-radius-bottomleft:7px;-webkit-border-bottom-left-radius:7px;border-bottom-left-radius:7px;-moz-border-radius-topleft:7px;-webkit-border-top-left-radius:7px;border-top-left-radius:7px;}
+	.toggle .last label{-moz-border-radius-bottomright:7px;-webkit-border-bottom-right-radius:7px;border-bottom-right-radius:7px;-moz-border-radius-topright:7px;-webkit-border-top-right-radius:7px;border-top-right-radius:7px;}
 	</style>
 
 	<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
-
 	<script type="text/javascript" src="custominput.js"></script>
-
 	<script type="text/javascript">
+	$(function(){
+		$('input').customInput();
+		$('.toggle').each(function(){
+			$('div:first',this).addClass('first');
+			$('div:last',this).addClass('last');	
+		}); 
 
-$(function(){
-
-	
-
-	$('input').customInput();
-
-	
-
-	$('.toggle').each(function(){
-
-		$('div:first',this).addClass('first');
-
-		$('div:last',this).addClass('last');	
-
-	}); 
-
-});
-
-</script>
-
+	});
+	</script>
 </head>
-
-
-
 <body>
-
-
-
 	<div class="demo">
-
-
-
 		<style type="text/css"></style>
-
 		<h3>jQuery 表单美化多选与单选功能</h3>
-
 		<form action="#" method="post">
-
 			<legend>你喜欢哪种类型?</legend>
-
 			<input type="checkbox" name="genre" id="action" value="action" />
-
 			<label for="action">动作/冒险</label>
-
-
-
 			<input type="checkbox" name="genre" id="comedy" value="comedy" />
-
 			<label for="comedy">喜剧</label>
-
-
-
 			<input type="checkbox" name="genre" id="check-3" value="epic" />
-
 			<label for="check-3">史诗/历史</label>
-
-
-
 			<input type="checkbox" name="genre" id="science" value="science" />
-
 			<label for="science">科幻小说</label>
-
-
-
 			<input type="checkbox" name="genre" id="romance" value="romance" />
-
 			<label for="romance">浪漫</label>
-
-
-
 			<input type="checkbox" name="genre" id="western" value="western" />
-
 			<label for="western">西方的</label>
-
-
-
 			<legend>小小球童是有史以来最伟大的电影，对不对？</legend>
-
 			<input type="radio" name="opinions" id="totally" value="totally" />
-
 			<label for="totally">完全</label>
-
-
-
 			<input type="radio" name="opinions" id="no-way" value="no-way" />
-
 			<label for="no-way">您一定是在开玩笑</label>
-
-
-
 			<input type="radio" name="opinions" id="whats-caddyshack" value="whats-caddyshack" />
-
 			<label for="whats-caddyshack">小小球童是什么？</label>
-
 		</form>
-
-
-
-		<style type="text/css"></style>
-
 		<h3>jQuery 表单美化按钮类型的多选与单选功能</h3>
-
 		<form action="#" method="post">
-
 			<fieldset id="view" class="toggle" style="float:left;">
-
 				<legend>单选:</legend>
-
 				<input type="radio" name="view" id="view-list" value="list" />
-
 				<label for="view-list">目录</label>
-
 				<input type="radio" name="view" id="view-grid" value="grid" />
-
 				<label for="view-grid">格子</label>
-
 			</fieldset>
-
-
-
 			<fieldset id="show" class="toggle">
-
 				<legend>多选:</legend>
-
 				<input type="checkbox" name="show" id="show-comments" value="comments" />
-
 				<label for="show-comments">评论</label>
-
 				<input type="checkbox" name="show" id="show-formatting" value="formatting" />
-
 				<label for="show-formatting">格式</label>
-
 				<input type="checkbox" name="show" id="show-changes" value="changes" />
-
 				<label for="show-changes">变化</label>
-
 			</fieldset>
-
-
-
 		</form>
-
-
-
 	</div>
-
-
-
 </body>
-
 </html>
