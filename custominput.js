@@ -22,7 +22,6 @@ jQuery.fn.customInput = function(){
 				function(){ $(this).addClass('hover'); },
 				function(){ $(this).removeClass('hover'); }
 			);
-			
 			//绑定自定义事件，触发它，绑定点击，焦点，模糊事件				
 			input.bind('updateState', function(){	
 				input.is(':checked') ? label.addClass('checked') : label.removeClass('checked checkedHover checkedFocus'); 
